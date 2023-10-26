@@ -79,29 +79,23 @@ const STEP_COST = 0.05;
 const COMPLETION_URL = "https://uclacomm.sona-systems.com/webstudy_credit.aspx?experiment_id=101&credit_token=ba49ffc4d07440b3bed00c58a257dd66&survey_code=";
 
 var instr_text = new Array;
-instr_text[0] = "<strong>Welcome!</strong><br><br>In this experiment, you will play a game that involves cooperating with an AI model to maximize your points as you complete each round.<br><br>Hope you enjoy it!";
+instr_text[0] = "<strong>Welcome!</strong><br><br>In this experiment, you will play a game that involves cooperating with a partner to maximize your points as you complete each round.<br><br>Hope you enjoy it!";
 instr_text[1] = "Please read the instructions on the next few pages carefully. <strong>You will be asked about the instructions later</strong> and go through some practice rounds to make sure you understand the game.";
-instr_text[2] = "In this experiment, you will be a helper from outside of the map. Your partner will be walking inside the maze, and will be gaining and losing points as they go.<br><br>Your task will be to point to tiles to help maximize the total points gained."; 
-instr_text[3] = "There are 3 colors of tiles in each map. The green tile" + "<img class='inlineShape' src='img/green.png' />" + "  is where your partner will START each round. The red tile" + "<img class='inlineShape' src='img/red.png' />" + " is where they will FINISH each round.<br><br>Each trial ends once they reach the red tile. Each step they take to reach the red tile will cost you both points." ;
-instr_text[4] = "There will be 3 purple tiles" + "<img class='inlineShape' src='img/purple.png' />" + " in each map. From your perspective, you can see that each purple tile has an item on it. Specifically, each trial will have 2 apples" + "<img class='inlineShape' src='img/apple.png' />" + " and 1 bee" + "<img class='inlineShape' src='img/bee.png' />" + " located randomly on the 3 purple tiles. However, <b>only you can see the apples and bees</b>. Your partner CANNOT. For instance, <br> YOUR perspective:  " + "<img class='outlineShape' src='img/partnerPOV.png' />" + "<br>Your PARTNER's perspective: " + " <img class='outlineShape' src='img/playerPOV.png' />";
-instr_text[5] = "As your partner moves through the maze, they will be able to <b>collect apples</b> or <b>run into bees</b>. If they <span class='rwdText'>collect apples</span>, you will both <span class='rwdText'>gain points</span>. If they <span class='punishText'>run into bees</span>, you will both <span class='punishText'>lose points</span>. <br><br>Each <span class='punishText'>step</span> they take <span class='punishText'>costs points</span>, and each time they reach the <span class='rwdText'>red finishing tile</span> you will both <span class='rwdText'>gain points</span>. The points at stake are as follows: <br><br>\
-Red Goal  = <b>+20</b><br> \
-Apples    = <b>+5</b><br>\
-Bee       = <b>-25</b><br>\
-Step Cost = <b>-1</b></b>";
-instr_text[6] = "There will also be walls" + "<img class='inlineShape' src='img/wall.png' />" + " inside of the maze. These will be in bold. Your partner cannot pass through walls.";
-instr_text[7] = "Each round, you will be able to <b>help your partner decide what path to take</b> (which tiles to go on on the way to the goal) <b>by pointing to either ZERO or ONE of the items</b>.  The tile that you selected will be highlighted in orange" + "<img class='inlineShape' src='img/orange.png' />" + " for them to see before they begin their path.<br><br>From their perspective, you will be pointing to one of 3 purple tiles. Your partner can ONLY see that a purple tile is highlighted. <b>They CANNOT see what item is there.<b>";
-instr_text[8] = "Help your partner reach the goal while trying to get the highest score possible. Have fun!";
+instr_text[2] = "During the experiment, you will be working with a partner to collect as many points as possible. You are assigned the role of the Helper. Your partner will be the Player.<br><br>You and your partner will be looking at two different screens. On your screen, you will see three purple tiles with points displayed on them. Meanwhile, your partner will only see the purple tiles. They will NOT be able to see what points each tile has. "; 
+instr_text[3] = "As the Helper, you will choose to highlight certain tiles. Your partner (the Player) will see what you highlighted and then select tiles. Both of you will receive the points that the Player collects. <br><br> Remember: you will not receive points for the tiles you highlighted. You will only receive points based on what the Player selects. Since the player is not aware of what points are on each tile, you must guide them to gain as many points as possible." ;
+instr_text[4] = "There are 3 conditions to pay attention to that will be written on the screen each round.<br>1: The number of tiles you could highlight for your partner will change.<br>2: The number of tiles your partner can pick up will change.<br>3: Sometimes, your partner will know what three scores are present in the round, but they will not know which score corresponds to which tile. Other times, your partner will not be aware of the present scores at all.<br><br>The conditions will be made clear to you each round. In order to work together with your partner, you must remember to pay attention to the conditions; they WILL be changing. Remember, you will only receive the points from the tiles that your partner chooses.";
+instr_text[5] = "Work together with your partner to gain as many points as possible. Good luck and have fun!";
 
+instr_text[6] = "";
+instr_text[7] = "By clicking on the NEXT button, I have acknowledged and hereby accept the terms. I understand the task in this experiment.";
+instr_text[8] = "Please start the practice rounds on the next page.";
 instr_text[9] = "";
-instr_text[10] = "By clicking on the NEXT button, I have acknowledged and hereby accept the terms. I understand the task in this experiment.";
-instr_text[11] = "Please start the practice rounds on the next page.";
-instr_text[12] = "";
-instr_text[13] = "You have finished all the practice rounds. You are now ready for the experiment. <br><br>Good luck!";
-instr_text[14] = "";
-instr_text[15] = "You have finished all the rounds in the experiment. Please answer all the questions on the next page.";
-instr_text[16] = "";
-instr_text[17] = ""; 
+
+instr_text[10] = "You have finished all the practice rounds. You are now ready for the experiment. <br><br>Good luck!";
+instr_text[11] = "";
+instr_text[12] = "You have finished all the rounds in the experiment. Please answer all the questions on the next page.";
+instr_text[13] = "";
+instr_text[14] = ""; 
 
 
 const INSTR_FUNC_DICT = {
@@ -111,20 +105,17 @@ const INSTR_FUNC_DICT = {
     3: SHOW_INSTR,
     4: SHOW_INSTR, 
     5: SHOW_INSTR, 
-	6: SHOW_INSTR,
-    7: SHOW_INSTR,
+
+    6: SHOW_INSTR_QUESTION,
+    7: SHOW_CONSENT,
     8: SHOW_INSTR,
+    9: START_PRACTICE_TRIAL, 
 
-    9: SHOW_INSTR_QUESTION,
-    10: SHOW_CONSENT,
-    11: SHOW_INSTR,
-    12: START_PRACTICE_TRIAL, 
-
-    13: SHOW_INSTR,
-    14: START_FORMAL_TRIAL,               
-    15: SHOW_INSTR,
-    16: SHOW_DEBRIEFING_PAGE,
-    17: SHOW_FINAL
+    10: SHOW_INSTR,
+    11: START_FORMAL_TRIAL,               
+    12: SHOW_INSTR,
+    13: SHOW_DEBRIEFING_PAGE,
+    14: SHOW_FINAL
 };
 
 var instr_options = {
